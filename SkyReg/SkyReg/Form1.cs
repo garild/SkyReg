@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace SkyReg
 {
-    public partial class FrmMain : Form
+    public partial class Form1 : Form
     {
-        public FrmMain()
+        public Form1()
         { 
             InitializeComponent();
         }
