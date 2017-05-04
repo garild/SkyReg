@@ -16,5 +16,10 @@ namespace SkyReg
         { 
             InitializeComponent();
         }
+
+        public void dupa()
+        {
+
+        }
     }
 }
