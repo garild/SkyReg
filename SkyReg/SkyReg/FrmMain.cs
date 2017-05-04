@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComponentFactory.Krypton.Toolkit;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SkyReg
 {
-    public partial class Form1 : Form
+    public partial class FrmMain : KryptonForm
     {
-        public Form1()
+        public FrmMain()
         { 
             InitializeComponent();
         }
