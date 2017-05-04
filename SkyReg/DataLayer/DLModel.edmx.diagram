@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="44f21ba0737d45d8a3eb870532b1ad50" Name="Diagram1" >
+        <EntityTypeShape EntityType="DLModel.User" Width="1.5" PointX="0.5" PointY="0.625" />
+        <EntityTypeShape EntityType="DLModel.Role" Width="1.5" PointX="2.5" PointY="0.625" />
+        <AssociationConnector Association="DLModel.UsersRoles" />
+        <EntityTypeShape EntityType="DLModel.Setting" Width="1.5" PointX="4.5" PointY="0.625" />
+        <EntityTypeShape EntityType="DLModel.Airplane" Width="1.5" PointX="4.5" PointY="2.375" />
+        <EntityTypeShape EntityType="DLModel.Flight" Width="1.5" PointX="6.625" PointY="0.625" />
+        <AssociationConnector Association="DLModel.AirplaneFlight" />
+        <EntityTypeShape EntityType="DLModel.FlightElement" Width="1.5" PointX="6.625" PointY="3.5" />
+        <AssociationConnector Association="DLModel.FlightFlightElement" />
+        <AssociationConnector Association="DLModel.UserFlightElement" />
+        <AssociationConnector Association="DLModel.RoleFlightElement" />
+        <EntityTypeShape EntityType="DLModel.TandemOrder" Width="1.5" PointX="8.75" PointY="4.375" />
+        <AssociationConnector Association="DLModel.TandemOrderUser" />
+        <AssociationConnector Association="DLModel.FlightElementTandemOrder" />
+        <AssociationConnector Association="DLModel.UserTandemOrder" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

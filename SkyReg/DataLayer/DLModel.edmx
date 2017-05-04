@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="DLModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="DLModelTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DLModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DLModelContainer" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="User" EntityType="DLModel.User" />
+          <EntitySet Name="Role" EntityType="DLModel.Role" />
+          <AssociationSet Name="UsersRoles" Association="DLModel.UsersRoles">
+            <End Role="Users" EntitySet="User" />
+            <End Role="Roles" EntitySet="Role" />
+          </AssociationSet>
+          <EntitySet Name="Setting" EntityType="DLModel.Setting" />
+          <EntitySet Name="Airplane" EntityType="DLModel.Airplane" />
+          <EntitySet Name="Flight" EntityType="DLModel.Flight" />
+          <AssociationSet Name="AirplaneFlight" Association="DLModel.AirplaneFlight">
+            <End Role="Airplane" EntitySet="Airplane" />
+            <End Role="Flight" EntitySet="Flight" />
+          </AssociationSet>
+          <EntitySet Name="FlightElement" EntityType="DLModel.FlightElement" />
+          <AssociationSet Name="FlightFlightElement" Association="DLModel.FlightFlightElement">
+            <End Role="Flight" EntitySet="Flight" />
+            <End Role="FlightElement" EntitySet="FlightElement" />
+          </AssociationSet>
+          <AssociationSet Name="UserFlightElement" Association="DLModel.UserFlightElement">
+            <End Role="User" EntitySet="User" />
+            <End Role="FlightElement" EntitySet="FlightElement" />
+          </AssociationSet>
+          <AssociationSet Name="RoleFlightElement" Association="DLModel.RoleFlightElement">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="FlightElement" EntitySet="FlightElement" />
+          </AssociationSet>
+          <EntitySet Name="TandemOrder" EntityType="DLModel.TandemOrder" />
+          <AssociationSet Name="TandemOrderUser" Association="DLModel.TandemOrderUser">
+            <End Role="TandemOrder" EntitySet="TandemOrder" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FlightElementTandemOrder" Association="DLModel.FlightElementTandemOrder">
+            <End Role="FlightElement" EntitySet="FlightElement" />
+            <End Role="TandemOrder" EntitySet="TandemOrder" />
+          </AssociationSet>
+          <AssociationSet Name="UserTandemOrder" Association="DLModel.UserTandemOrder">
+            <End Role="User" EntitySet="User" />
+            <End Role="TandemOrder" EntitySet="TandemOrder" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Role" Relationship="DLModel.UsersRoles" FromRole="Users" ToRole="Roles" />
+          <Property Name="UsersNr" Type="Int32" Nullable="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="SurName" Type="String" Nullable="false" />
+          <Property Name="Login" Type="String" Nullable="true" />
+          <Property Name="Password" Type="String" Nullable="true" />
+          <Property Name="CertificateNr" Type="String" Nullable="true" />
+          <Property Name="CertificateDate" Type="DateTime" Nullable="true" />
+          <Property Name="Street" Type="String" Nullable="true" />
+          <Property Name="ZipCode" Type="String" Nullable="true" />
+          <Property Name="City" Type="String" Nullable="true" />
+          <Property Name="Phone" Type="String" Nullable="true" />
+          <Property Name="Email" Type="String" Nullable="true" />
+          <Property Name="Facebook" Type="String" Nullable="true" />
+          <NavigationProperty Name="FlightElement" Relationship="DLModel.UserFlightElement" FromRole="User" ToRole="FlightElement" />
+          <NavigationProperty Name="TandemOrderPilot" Relationship="DLModel.TandemOrderUser" FromRole="User" ToRole="TandemOrder" />
+          <NavigationProperty Name="TandemOrderPassenger" Relationship="DLModel.UserTandemOrder" FromRole="User" ToRole="TandemOrder" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="User" Relationship="DLModel.UsersRoles" FromRole="Roles" ToRole="Users" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Value" Type="Double" Nullable="true" />
+          <Property Name="Camera" Type="Boolean" Nullable="false" />
+          <Property Name="TandemPilot" Type="Boolean" Nullable="false" />
+          <Property Name="TandemPassenger" Type="Boolean" Nullable="false" />
+          <Property Name="SpecialType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FlightElement" Relationship="DLModel.RoleFlightElement" FromRole="Role" ToRole="FlightElement" />
+        </EntityType>
+        <Association Name="UsersRoles">
+          <End Type="DLModel.User" Role="Users" Multiplicity="1" />
+          <End Type="DLModel.Role" Role="Roles" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssemblyValue" Type="Double" Nullable="false" />
+          <Property Name="CameraValue" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Airplane">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Number" Type="String" Nullable="false" />
+          <Property Name="Seats" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Flight" Relationship="DLModel.AirplaneFlight" FromRole="Airplane" ToRole="Flight" />
+        </EntityType>
+        <EntityType Name="Flight">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Airplane" Relationship="DLModel.AirplaneFlight" FromRole="Flight" ToRole="Airplane" />
+          <NavigationProperty Name="FlightElement" Relationship="DLModel.FlightFlightElement" FromRole="Flight" ToRole="FlightElement" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Altitude" Type="Double" Nullable="true" />
+        </EntityType>
+        <Association Name="AirplaneFlight">
+          <End Type="DLModel.Airplane" Role="Airplane" Multiplicity="0..1" />
+          <End Type="DLModel.Flight" Role="Flight" Multiplicity="1" />
+        </Association>
+        <EntityType Name="FlightElement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Flight" Relationship="DLModel.FlightFlightElement" FromRole="FlightElement" ToRole="Flight" />
+          <NavigationProperty Name="User" Relationship="DLModel.UserFlightElement" FromRole="FlightElement" ToRole="User" />
+          <NavigationProperty Name="Role" Relationship="DLModel.RoleFlightElement" FromRole="FlightElement" ToRole="Role" />
+          <NavigationProperty Name="TandemOrder" Relationship="DLModel.FlightElementTandemOrder" FromRole="FlightElement" ToRole="TandemOrder" />
+        </EntityType>
+        <Association Name="FlightFlightElement">
+          <End Type="DLModel.Flight" Role="Flight" Multiplicity="1" />
+          <End Type="DLModel.FlightElement" Role="FlightElement" Multiplicity="*" />
+        </Association>
+        <Association Name="UserFlightElement">
+          <End Type="DLModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DLModel.FlightElement" Role="FlightElement" Multiplicity="1" />
+        </Association>
+        <Association Name="RoleFlightElement">
+          <End Type="DLModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="DLModel.FlightElement" Role="FlightElement" Multiplicity="1" />
+        </Association>
+        <EntityType Name="TandemOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="TandemPilot" Relationship="DLModel.TandemOrderUser" FromRole="TandemOrder" ToRole="User" />
+          <Property Name="SuggestDateTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="FlightElement" Relationship="DLModel.FlightElementTandemOrder" FromRole="TandemOrder" ToRole="FlightElement" />
+          <NavigationProperty Name="TandemPassenger" Relationship="DLModel.UserTandemOrder" FromRole="TandemOrder" ToRole="User" />
+        </EntityType>
+        <Association Name="TandemOrderUser">
+          <End Type="DLModel.TandemOrder" Role="TandemOrder" Multiplicity="1" />
+          <End Type="DLModel.User" Role="User" Multiplicity="0..1" />
+        </Association>
+        <Association Name="FlightElementTandemOrder">
+          <End Type="DLModel.FlightElement" Role="FlightElement" Multiplicity="1" />
+          <End Type="DLModel.TandemOrder" Role="TandemOrder" Multiplicity="0..1" />
+        </Association>
+        <Association Name="UserTandemOrder">
+          <End Type="DLModel.User" Role="User" Multiplicity="1" />
+          <End Type="DLModel.TandemOrder" Role="TandemOrder" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="DLModel" />
+        <Alias Key="Target" Value="DLModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="DLModelContainer" StorageEntityContainer="DLModelTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
