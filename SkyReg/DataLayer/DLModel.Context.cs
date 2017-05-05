@@ -18,7 +18,14 @@ namespace DataLayer
         public DLModelContainer()
             : base("name=DLModelContainer")
         {
+            // Wyłączenie lasy loading
             this.Configuration.LazyLoadingEnabled = false;
+            // Zależne od lasy loading - pobiera modele określone w referencji encji bazowej
+            this.Configuration.ProxyCreationEnabled = false;
+            // Validacja zbędna - optymalizacja
+            this.Configuration.ValidateOnSaveEnabled = false;
+            // Autośledzenie zmian,zbędne - optymalizacja
+            this.Configuration.AutoDetectChangesEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
