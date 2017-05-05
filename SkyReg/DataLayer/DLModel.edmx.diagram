@@ -16,7 +16,7 @@
         <AssociationConnector Association="DLModel.FlightFlightElement" />
         <AssociationConnector Association="DLModel.UserFlightElement" />
         <AssociationConnector Association="DLModel.RoleFlightElement" />
-        <EntityTypeShape EntityType="DLModel.TandemOrder" Width="1.5" PointX="8.75" PointY="4.375" />
+        <EntityTypeShape EntityType="DLModel.TandemOrder" Width="1.5" PointX="9.5" PointY="4.375" />
         <AssociationConnector Association="DLModel.TandemOrderUser" />
         <AssociationConnector Association="DLModel.FlightElementTandemOrder" />
         <AssociationConnector Association="DLModel.UserTandemOrder" />
