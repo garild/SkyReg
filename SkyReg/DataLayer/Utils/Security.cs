@@ -4,11 +4,11 @@ using System.Text;
 
 namespace DataLayer.Utils
 {
-    public class Security
+    public static class Security
     {
         public static readonly byte[] KeyIV = { 16, 19, 25, 213, 245, 146, 178, 99 };
         public static readonly byte[] KeySec = { 254, 1, 126, 89, 221, 13, 65, 150 };
-        public static string DecryptString(string stringIn)
+        public static string DecryptString(this string stringIn)
         {
             string stringOut = string.Empty;
 
@@ -26,7 +26,7 @@ namespace DataLayer.Utils
             return stringOut;
         }
 
-        public static string EncryptString(string stringIn)
+        public static string EncryptString(this string stringIn)
         {
             string stringOut = string.Empty;
 

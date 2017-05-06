@@ -35,13 +35,13 @@
             this.TabsIconList = new System.Windows.Forms.ImageList(this.components);
             this.TabControl = new AC.ExtendedRenderer.Navigator.KryptonTabControl();
             this.tabPageFlights = new System.Windows.Forms.TabPage();
+            this.GroupH_Departures = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.tabPageUsers = new System.Windows.Forms.TabPage();
             this.tabPageUsersRole = new System.Windows.Forms.TabPage();
             this.tabPageAirplanes = new System.Windows.Forms.TabPage();
             this.tabPageTandems = new System.Windows.Forms.TabPage();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
-            this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
-            this.GroupH_Departures = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
+            this.StyleManager = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.statusStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPageFlights.SuspendLayout();
@@ -122,6 +122,17 @@
             this.tabPageFlights.Tag = false;
             this.tabPageFlights.Text = "Wyloty";
             // 
+            // GroupH_Departures
+            // 
+            this.GroupH_Departures.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GroupH_Departures.HeaderStylePrimary = ComponentFactory.Krypton.Toolkit.HeaderStyle.Calendar;
+            this.GroupH_Departures.HeaderVisibleSecondary = false;
+            this.GroupH_Departures.Location = new System.Drawing.Point(0, 0);
+            this.GroupH_Departures.Name = "GroupH_Departures";
+            this.GroupH_Departures.Size = new System.Drawing.Size(1093, 408);
+            this.GroupH_Departures.TabIndex = 0;
+            this.GroupH_Departures.ValuesPrimary.Heading = "Wyloty";
+            // 
             // tabPageUsers
             // 
             this.tabPageUsers.BackColor = System.Drawing.SystemColors.Window;
@@ -181,20 +192,9 @@
             this.tabPageSettings.Tag = false;
             this.tabPageSettings.Text = "Ustawienia";
             // 
-            // kryptonManager1
+            // StyleManager
             // 
-            this.kryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2007Blue;
-            // 
-            // GroupH_Departures
-            // 
-            this.GroupH_Departures.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GroupH_Departures.HeaderStylePrimary = ComponentFactory.Krypton.Toolkit.HeaderStyle.Calendar;
-            this.GroupH_Departures.HeaderVisibleSecondary = false;
-            this.GroupH_Departures.Location = new System.Drawing.Point(0, 0);
-            this.GroupH_Departures.Name = "GroupH_Departures";
-            this.GroupH_Departures.Size = new System.Drawing.Size(1093, 408);
-            this.GroupH_Departures.TabIndex = 0;
-            this.GroupH_Departures.ValuesPrimary.Heading = "Wyloty";
+            this.StyleManager.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2007Blue;
             // 
             // FrmMain
             // 
@@ -232,7 +232,7 @@
         private System.Windows.Forms.TabPage tabPageAirplanes;
         private System.Windows.Forms.TabPage tabPageTandems;
         private System.Windows.Forms.TabPage tabPageSettings;
-        private ComponentFactory.Krypton.Toolkit.KryptonManager kryptonManager1;
+        private ComponentFactory.Krypton.Toolkit.KryptonManager StyleManager;
         private ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup GroupH_Departures;
     }
 }
