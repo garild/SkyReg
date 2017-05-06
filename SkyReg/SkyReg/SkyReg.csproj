@@ -111,6 +111,7 @@
   <ItemGroup>
     <Content Include="AppData\AC.ExtendedRenderer.Toolkit.dll" />
     <Content Include="AppData\ComponentFactory.Krypton.Toolkit.dll" />
+    <Content Include="AppData\SkyReg.ico" />
     <None Include="Resources\Login.png" />
   </ItemGroup>
   <ItemGroup>

@@ -29,6 +29,7 @@ namespace SkyReg.MainForm
             InitializeComponent();
             LoadSettings();
         }
+
         private bool ValidateControls()
         {
 
@@ -48,11 +49,15 @@ namespace SkyReg.MainForm
 
             return result;
         }
+
         private void LoadSettings()
         {
             try
             {
                 CommonMethods.CheckInternetConnection();
+
+                using (var db = new DLModelContainer())
+                    db.Database.Initialize(true);
 
                 if (File.Exists(documentsPath + @"\UserConfig.xml"))
                 {
@@ -65,8 +70,7 @@ namespace SkyReg.MainForm
                     };
                 }
 
-                using (var db = new DLModelContainer())
-                    db.Database.Initialize(true);
+               
             }
 
             catch (Exception)
