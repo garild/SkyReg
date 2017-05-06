@@ -35,17 +35,19 @@
             this.TabsIconList = new System.Windows.Forms.ImageList(this.components);
             this.TabControl = new AC.ExtendedRenderer.Navigator.KryptonTabControl();
             this.tabPageFlights = new System.Windows.Forms.TabPage();
-            this.kryptonPanelEx1 = new AC.ExtendedRenderer.Toolkit.KryptonPanelEx();
             this.tabPageUsers = new System.Windows.Forms.TabPage();
             this.tabPageUsersRole = new System.Windows.Forms.TabPage();
             this.tabPageAirplanes = new System.Windows.Forms.TabPage();
             this.tabPageTandems = new System.Windows.Forms.TabPage();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
-            this.kryptonPanelEx2 = new AC.ExtendedRenderer.Toolkit.KryptonPanelEx();
+            this.GroupH_Departures = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.statusStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPageFlights.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupH_Departures)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupH_Departures.Panel)).BeginInit();
+            this.GroupH_Departures.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -108,9 +110,9 @@
             // 
             // tabPageFlights
             // 
-            this.tabPageFlights.BackColor = System.Drawing.SystemColors.Window;
-            this.tabPageFlights.Controls.Add(this.kryptonPanelEx2);
-            this.tabPageFlights.Controls.Add(this.kryptonPanelEx1);
+            this.tabPageFlights.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageFlights.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tabPageFlights.Controls.Add(this.GroupH_Departures);
             this.tabPageFlights.ImageIndex = 0;
             this.tabPageFlights.Location = new System.Drawing.Point(4, 34);
             this.tabPageFlights.Margin = new System.Windows.Forms.Padding(0);
@@ -119,20 +121,6 @@
             this.tabPageFlights.TabIndex = 0;
             this.tabPageFlights.Tag = false;
             this.tabPageFlights.Text = "Wyloty";
-            // 
-            // kryptonPanelEx1
-            // 
-            this.kryptonPanelEx1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.kryptonPanelEx1.GradientDirection = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.kryptonPanelEx1.GradientToogleColors = false;
-            this.kryptonPanelEx1.GradientUseBlend = false;
-            this.kryptonPanelEx1.Image = null;
-            this.kryptonPanelEx1.ImageLocation = new System.Drawing.Point(4, 4);
-            this.kryptonPanelEx1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanelEx1.Name = "kryptonPanelEx1";
-            this.kryptonPanelEx1.PersistentColors = false;
-            this.kryptonPanelEx1.Size = new System.Drawing.Size(1093, 30);
-            this.kryptonPanelEx1.TabIndex = 0;
             // 
             // tabPageUsers
             // 
@@ -197,19 +185,16 @@
             // 
             this.kryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2007Blue;
             // 
-            // kryptonPanelEx2
+            // GroupH_Departures
             // 
-            this.kryptonPanelEx2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanelEx2.GradientDirection = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.kryptonPanelEx2.GradientToogleColors = false;
-            this.kryptonPanelEx2.GradientUseBlend = false;
-            this.kryptonPanelEx2.Image = null;
-            this.kryptonPanelEx2.ImageLocation = new System.Drawing.Point(4, 4);
-            this.kryptonPanelEx2.Location = new System.Drawing.Point(0, 378);
-            this.kryptonPanelEx2.Name = "kryptonPanelEx2";
-            this.kryptonPanelEx2.PersistentColors = false;
-            this.kryptonPanelEx2.Size = new System.Drawing.Size(1093, 30);
-            this.kryptonPanelEx2.TabIndex = 2;
+            this.GroupH_Departures.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GroupH_Departures.HeaderStylePrimary = ComponentFactory.Krypton.Toolkit.HeaderStyle.Calendar;
+            this.GroupH_Departures.HeaderVisibleSecondary = false;
+            this.GroupH_Departures.Location = new System.Drawing.Point(0, 0);
+            this.GroupH_Departures.Name = "GroupH_Departures";
+            this.GroupH_Departures.Size = new System.Drawing.Size(1093, 408);
+            this.GroupH_Departures.TabIndex = 0;
+            this.GroupH_Departures.ValuesPrimary.Heading = "Wyloty";
             // 
             // FrmMain
             // 
@@ -218,6 +203,8 @@
             this.ClientSize = new System.Drawing.Size(1101, 468);
             this.Controls.Add(this.TabControl);
             this.Controls.Add(this.statusStrip1);
+            this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SkyReg";
@@ -225,6 +212,9 @@
             this.statusStrip1.PerformLayout();
             this.TabControl.ResumeLayout(false);
             this.tabPageFlights.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GroupH_Departures.Panel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GroupH_Departures)).EndInit();
+            this.GroupH_Departures.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,14 +227,13 @@
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private AC.ExtendedRenderer.Navigator.KryptonTabControl TabControl;
         private System.Windows.Forms.TabPage tabPageFlights;
-        private AC.ExtendedRenderer.Toolkit.KryptonPanelEx kryptonPanelEx1;
         private System.Windows.Forms.TabPage tabPageUsers;
         private System.Windows.Forms.TabPage tabPageUsersRole;
         private System.Windows.Forms.TabPage tabPageAirplanes;
         private System.Windows.Forms.TabPage tabPageTandems;
         private System.Windows.Forms.TabPage tabPageSettings;
         private ComponentFactory.Krypton.Toolkit.KryptonManager kryptonManager1;
-        private AC.ExtendedRenderer.Toolkit.KryptonPanelEx kryptonPanelEx2;
+        private ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup GroupH_Departures;
     }
 }
 
