@@ -12,17 +12,14 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class SingularUser
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public Nullable<double> Value { get; set; }
-        public bool Camera { get; set; }
-        public bool TandemPilot { get; set; }
-        public bool TandemPassenger { get; set; }
-        public int SpecialType { get; set; }
+        public string FirstName { get; set; }
+        public string SurName { get; set; }
+        public System.DateTime PlaningDate { get; set; }
     
-        public virtual User User { get; set; }
-        public virtual FlightElement FlightElement { get; set; }
+        public virtual Order Order { get; set; }
+        public virtual FlightsElem FlightsElem { get; set; }
     }
 }

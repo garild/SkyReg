@@ -12,13 +12,15 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class FlightElement
+    public partial class Parachute
     {
         public int Id { get; set; }
+        public int IdNr { get; set; }
+        public string Name { get; set; }
+        public string RegistryNr { get; set; }
+        public decimal RentValue { get; set; }
     
-        public virtual Flight Flight { get; set; }
         public virtual User User { get; set; }
-        public virtual Role Role { get; set; }
-        public virtual TandemOrder TandemOrder { get; set; }
+        public virtual FlightsElem FlightsElem { get; set; }
     }
 }

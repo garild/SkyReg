@@ -5,21 +5,27 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="44f21ba0737d45d8a3eb870532b1ad50" Name="Diagram1" >
-        <EntityTypeShape EntityType="DLModel.User" Width="1.5" PointX="0.5" PointY="0.625" />
-        <EntityTypeShape EntityType="DLModel.Role" Width="1.5" PointX="2.5" PointY="0.625" />
-        <AssociationConnector Association="DLModel.UsersRoles" />
-        <EntityTypeShape EntityType="DLModel.Setting" Width="1.5" PointX="4.5" PointY="0.625" />
-        <EntityTypeShape EntityType="DLModel.Airplane" Width="1.5" PointX="4.5" PointY="2.375" />
-        <EntityTypeShape EntityType="DLModel.Flight" Width="1.5" PointX="6.625" PointY="0.625" />
-        <AssociationConnector Association="DLModel.AirplaneFlight" />
-        <EntityTypeShape EntityType="DLModel.FlightElement" Width="1.5" PointX="6.625" PointY="3.5" />
-        <AssociationConnector Association="DLModel.FlightFlightElement" />
-        <AssociationConnector Association="DLModel.UserFlightElement" />
-        <AssociationConnector Association="DLModel.RoleFlightElement" />
-        <EntityTypeShape EntityType="DLModel.TandemOrder" Width="1.5" PointX="9.5" PointY="4.375" />
-        <AssociationConnector Association="DLModel.TandemOrderUser" />
-        <AssociationConnector Association="DLModel.FlightElementTandemOrder" />
-        <AssociationConnector Association="DLModel.UserTandemOrder" />
+        <EntityTypeShape EntityType="DLModel.PaymentsSetting" Width="1.5" PointX="9.25" PointY="0.5" />
+        <EntityTypeShape EntityType="DLModel.GlobalSetting" Width="1.5" PointX="11" PointY="0.5" />
+        <EntityTypeShape EntityType="DLModel.Operator" Width="1.5" PointX="7.625" PointY="0.5" />
+        <EntityTypeShape EntityType="DLModel.UsersType" Width="1.5" PointX="8.25" PointY="5" />
+        <EntityTypeShape EntityType="DLModel.SingularUser" Width="1.5" PointX="7.75" PointY="2.75" />
+        <EntityTypeShape EntityType="DLModel.User" Width="1.5" PointX="3.875" PointY="2.125" />
+        <AssociationConnector Association="DLModel.UserUsersType" />
+        <AssociationConnector Association="DLModel.UserOperator" />
+        <EntityTypeShape EntityType="DLModel.Airplane" Width="1.5" PointX="9.875" PointY="3.5" />
+        <EntityTypeShape EntityType="DLModel.Order" Width="1.5" PointX="5.875" PointY="3.875" />
+        <AssociationConnector Association="DLModel.OrderUser" />
+        <AssociationConnector Association="DLModel.OrderSingularUser" />
+        <EntityTypeShape EntityType="DLModel.Flight" Width="1.5" PointX="5.625" PointY="1" />
+        <AssociationConnector Association="DLModel.FlightAirplane" />
+        <EntityTypeShape EntityType="DLModel.FlightsElem" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DLModel.Parachute" Width="1.5" PointX="1.75" PointY="4.625" />
+        <AssociationConnector Association="DLModel.ParachuteUser" />
+        <AssociationConnector Association="DLModel.FlightsElemFlight" />
+        <AssociationConnector Association="DLModel.FlightsElemUser" />
+        <AssociationConnector Association="DLModel.FlightsElemSingularUser" />
+        <AssociationConnector Association="DLModel.FlightsElemParachute" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

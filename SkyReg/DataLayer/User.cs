@@ -17,28 +17,32 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Role = new HashSet<Role>();
+            this.UsersType = new HashSet<UsersType>();
+            this.Operator = new HashSet<Operator>();
         }
     
         public int Id { get; set; }
-        public Nullable<int> UsersNr { get; set; }
-        public string FirstName { get; set; }
-        public string SurName { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public string CertificateNr { get; set; }
-        public Nullable<System.DateTime> CertificateDate { get; set; }
-        public string Street { get; set; }
-        public string ZipCode { get; set; }
+        public string Certificate { get; set; }
+        public System.DateTime CertDate { get; set; }
+        public string FirstName { get; set; }
+        public string SurName { get; set; }
         public string City { get; set; }
+        public string ZipCode { get; set; }
+        public string Street { get; set; }
+        public string StreetNr { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public string Facebook { get; set; }
+        public string FaceBook { get; set; }
+        public int IdNr { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Role> Role { get; set; }
-        public virtual FlightElement FlightElement { get; set; }
-        public virtual TandemOrder TandemOrderPilot { get; set; }
-        public virtual TandemOrder TandemOrderPassenger { get; set; }
+        public virtual ICollection<UsersType> UsersType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Operator> Operator { get; set; }
+        public virtual Order Order { get; set; }
+        public virtual Parachute Parachute { get; set; }
+        public virtual FlightsElem FlightsElem { get; set; }
     }
 }

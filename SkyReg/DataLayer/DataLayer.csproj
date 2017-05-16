@@ -69,20 +69,32 @@
     <Compile Include="Flight.cs">
       <DependentUpon>DLModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="FlightElement.cs">
+    <Compile Include="FlightsElem.cs">
+      <DependentUpon>DLModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalSetting.cs">
+      <DependentUpon>DLModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Operator.cs">
+      <DependentUpon>DLModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>DLModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parachute.cs">
+      <DependentUpon>DLModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentsSetting.cs">
       <DependentUpon>DLModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Role.cs">
-      <DependentUpon>DLModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Setting.cs">
-      <DependentUpon>DLModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TandemOrder.cs">
+    <Compile Include="SingularUser.cs">
       <DependentUpon>DLModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
+      <DependentUpon>DLModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsersType.cs">
       <DependentUpon>DLModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Utils\ErrorInterceptor.cs" />

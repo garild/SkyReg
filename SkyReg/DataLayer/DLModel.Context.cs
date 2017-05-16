@@ -18,14 +18,7 @@ namespace DataLayer
         public DLModelContainer()
             : base("name=DLModelContainer")
         {
-            // Wyłączenie lasy loading
             this.Configuration.LazyLoadingEnabled = false;
-            // Zależne od lasy loading - pobiera modele określone w referencji encji bazowej
-            this.Configuration.ProxyCreationEnabled = false;
-            // Validacja zbędna - optymalizacja
-            this.Configuration.ValidateOnSaveEnabled = false;
-            // Autośledzenie zmian,zbędne - optymalizacja
-            this.Configuration.AutoDetectChangesEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -33,12 +26,16 @@ namespace DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<Setting> Setting { get; set; }
-        public virtual DbSet<Airplane> Airplane { get; set; }
-        public virtual DbSet<Flight> Flight { get; set; }
-        public virtual DbSet<FlightElement> FlightElement { get; set; }
-        public virtual DbSet<TandemOrder> TandemOrder { get; set; }
+        public virtual DbSet<PaymentsSetting> PaymentsSettingSet { get; set; }
+        public virtual DbSet<GlobalSetting> GlobalSettingSet { get; set; }
+        public virtual DbSet<Operator> OperatorSet { get; set; }
+        public virtual DbSet<UsersType> UsersTypeSet { get; set; }
+        public virtual DbSet<SingularUser> SingularUserSet { get; set; }
+        public virtual DbSet<User> UserSet { get; set; }
+        public virtual DbSet<Airplane> AirplaneSet { get; set; }
+        public virtual DbSet<Order> OrderSet { get; set; }
+        public virtual DbSet<Flight> FlightSet { get; set; }
+        public virtual DbSet<FlightsElem> FlightsElemSet { get; set; }
+        public virtual DbSet<Parachute> ParachuteSet { get; set; }
     }
 }

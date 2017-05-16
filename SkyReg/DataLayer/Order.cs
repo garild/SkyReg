@@ -12,10 +12,13 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Setting
+    public partial class Order
     {
         public int Id { get; set; }
-        public double AssemblyValue { get; set; }
-        public double CameraValue { get; set; }
+        public System.DateTime OrderTime { get; set; }
+        public bool IsUser { get; set; }
+    
+        public virtual User User { get; set; }
+        public virtual SingularUser SingularUser { get; set; }
     }
 }

@@ -12,13 +12,14 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class TandemOrder
+    public partial class GlobalSetting
     {
         public int Id { get; set; }
-        public System.DateTime SuggestDateTime { get; set; }
-    
-        public virtual User TandemPilot { get; set; }
-        public virtual FlightElement FlightElement { get; set; }
-        public virtual User TandemPassenger { get; set; }
+        public decimal AssemblyValue { get; set; }
+        public System.TimeSpan TimeBefore { get; set; }
+        public System.TimeSpan TimeAfter { get; set; }
+        public string AirportsName { get; set; }
+        public short CertExpired { get; set; }
+        public string CountPerHour { get; set; }
     }
 }

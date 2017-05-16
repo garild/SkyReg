@@ -6,534 +6,242 @@
     <edmx:StorageModels>
     <Schema Namespace="DLModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="DLModelStoreContainer">
-    <EntitySet Name="User" EntityType="DLModel.Store.User" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Role" EntityType="DLModel.Store.Role" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Setting" EntityType="DLModel.Store.Setting" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Airplane" EntityType="DLModel.Store.Airplane" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Flight" EntityType="DLModel.Store.Flight" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="FlightElement" EntityType="DLModel.Store.FlightElement" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TandemOrder" EntityType="DLModel.Store.TandemOrder" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="UsersRoles" Association="DLModel.Store.UsersRoles">
-      <End Role="Users" EntitySet="User" />
-      <End Role="Roles" EntitySet="Role" />
-    </AssociationSet>
-    <AssociationSet Name="AirplaneFlight" Association="DLModel.Store.AirplaneFlight">
-      <End Role="Airplane" EntitySet="Airplane" />
-      <End Role="Flight" EntitySet="Flight" />
-    </AssociationSet>
-    <AssociationSet Name="FlightFlightElement" Association="DLModel.Store.FlightFlightElement">
-      <End Role="Flight" EntitySet="Flight" />
-      <End Role="FlightElement" EntitySet="FlightElement" />
-    </AssociationSet>
-    <AssociationSet Name="UserFlightElement" Association="DLModel.Store.UserFlightElement">
-      <End Role="User" EntitySet="User" />
-      <End Role="FlightElement" EntitySet="FlightElement" />
-    </AssociationSet>
-    <AssociationSet Name="RoleFlightElement" Association="DLModel.Store.RoleFlightElement">
-      <End Role="Role" EntitySet="Role" />
-      <End Role="FlightElement" EntitySet="FlightElement" />
-    </AssociationSet>
-    <AssociationSet Name="TandemOrderUser" Association="DLModel.Store.TandemOrderUser">
-      <End Role="TandemOrder" EntitySet="TandemOrder" />
-      <End Role="User" EntitySet="User" />
-    </AssociationSet>
-    <AssociationSet Name="FlightElementTandemOrder" Association="DLModel.Store.FlightElementTandemOrder">
-      <End Role="FlightElement" EntitySet="FlightElement" />
-      <End Role="TandemOrder" EntitySet="TandemOrder" />
-    </AssociationSet>
-    <AssociationSet Name="UserTandemOrder" Association="DLModel.Store.UserTandemOrder">
-      <End Role="User" EntitySet="User" />
-      <End Role="TandemOrder" EntitySet="TandemOrder" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UsersNr" Type="int" Nullable="true" />
-    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SurName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Login" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Password" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="CertificateNr" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="CertificateDate" Type="datetime" Nullable="true" />
-    <Property Name="Street" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="ZipCode" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="City" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Phone" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Email" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Facebook" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="FlightElement_Id" Type="int" Nullable="false" />
-    <Property Name="TandemOrderPilot_Id" Type="int" Nullable="false" />
-    <Property Name="TandemOrderPassenger_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Role">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Value" Type="float" Nullable="true" />
-    <Property Name="Camera" Type="bit" Nullable="false" />
-    <Property Name="TandemPilot" Type="bit" Nullable="false" />
-    <Property Name="TandemPassenger" Type="bit" Nullable="false" />
-    <Property Name="SpecialType" Type="int" Nullable="false" />
-    <Property Name="User_Id" Type="int" Nullable="false" />
-    <Property Name="FlightElement_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Setting">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AssemblyValue" Type="float" Nullable="false" />
-    <Property Name="CameraValue" Type="float" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Airplane">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Seats" Type="int" Nullable="false" />
-    <Property Name="Flight_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Flight">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DateTime" Type="datetime" Nullable="false" />
-    <Property Name="Status" Type="int" Nullable="false" />
-    <Property Name="Altitude" Type="float" Nullable="true" />
-  </EntityType>
-  <EntityType Name="FlightElement">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Flight_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TandemOrder">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SuggestDateTime" Type="datetime" Nullable="false" />
-    <Property Name="FlightElement_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="UsersRoles">
-    <End Role="Users" Type="DLModel.Store.User" Multiplicity="1" />
-    <End Role="Roles" Type="DLModel.Store.Role" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Roles">
-        <PropertyRef Name="User_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="AirplaneFlight">
-    <End Role="Airplane" Type="DLModel.Store.Airplane" Multiplicity="*" />
-    <End Role="Flight" Type="DLModel.Store.Flight" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Flight">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Airplane">
-        <PropertyRef Name="Flight_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FlightFlightElement">
-    <End Role="Flight" Type="DLModel.Store.Flight" Multiplicity="1" />
-    <End Role="FlightElement" Type="DLModel.Store.FlightElement" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Flight">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="FlightElement">
-        <PropertyRef Name="Flight_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserFlightElement">
-    <End Role="User" Type="DLModel.Store.User" Multiplicity="*" />
-    <End Role="FlightElement" Type="DLModel.Store.FlightElement" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="FlightElement">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="FlightElement_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="RoleFlightElement">
-    <End Role="Role" Type="DLModel.Store.Role" Multiplicity="*" />
-    <End Role="FlightElement" Type="DLModel.Store.FlightElement" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="FlightElement">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Role">
-        <PropertyRef Name="FlightElement_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="TandemOrderUser">
-    <End Role="TandemOrder" Type="DLModel.Store.TandemOrder" Multiplicity="1" />
-    <End Role="User" Type="DLModel.Store.User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TandemOrder">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="TandemOrderPilot_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FlightElementTandemOrder">
-    <End Role="FlightElement" Type="DLModel.Store.FlightElement" Multiplicity="1" />
-    <End Role="TandemOrder" Type="DLModel.Store.TandemOrder" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="FlightElement">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TandemOrder">
-        <PropertyRef Name="FlightElement_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserTandemOrder">
-    <End Role="User" Type="DLModel.Store.User" Multiplicity="*" />
-    <End Role="TandemOrder" Type="DLModel.Store.TandemOrder" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="TandemOrder">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="TandemOrderPassenger_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    </EntityContainer>
+  </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DLModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="DLModelContainer" annotation:LazyLoadingEnabled="false">
-          <EntitySet Name="User" EntityType="DLModel.User" />
-          <EntitySet Name="Role" EntityType="DLModel.Role" />
-          <AssociationSet Name="UsersRoles" Association="DLModel.UsersRoles">
-            <End Role="Users" EntitySet="User" />
-            <End Role="Roles" EntitySet="Role" />
+          <EntitySet Name="PaymentsSettingSet" EntityType="DLModel.PaymentsSetting" />
+          <EntitySet Name="GlobalSettingSet" EntityType="DLModel.GlobalSetting" />
+          <EntitySet Name="OperatorSet" EntityType="DLModel.Operator" />
+          <EntitySet Name="UsersTypeSet" EntityType="DLModel.UsersType" />
+          <EntitySet Name="SingularUserSet" EntityType="DLModel.SingularUser" />
+          <EntitySet Name="UserSet" EntityType="DLModel.User" />
+          <AssociationSet Name="UserUsersType" Association="DLModel.UserUsersType">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="UsersType" EntitySet="UsersTypeSet" />
           </AssociationSet>
-          <EntitySet Name="Setting" EntityType="DLModel.Setting" />
-          <EntitySet Name="Airplane" EntityType="DLModel.Airplane" />
-          <EntitySet Name="Flight" EntityType="DLModel.Flight" />
-          <AssociationSet Name="AirplaneFlight" Association="DLModel.AirplaneFlight">
-            <End Role="Airplane" EntitySet="Airplane" />
-            <End Role="Flight" EntitySet="Flight" />
+          <AssociationSet Name="UserOperator" Association="DLModel.UserOperator">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Operator" EntitySet="OperatorSet" />
           </AssociationSet>
-          <EntitySet Name="FlightElement" EntityType="DLModel.FlightElement" />
-          <AssociationSet Name="FlightFlightElement" Association="DLModel.FlightFlightElement">
-            <End Role="Flight" EntitySet="Flight" />
-            <End Role="FlightElement" EntitySet="FlightElement" />
+          <EntitySet Name="AirplaneSet" EntityType="DLModel.Airplane" />
+          <EntitySet Name="OrderSet" EntityType="DLModel.Order" />
+          <AssociationSet Name="OrderUser" Association="DLModel.OrderUser">
+            <End Role="Order" EntitySet="OrderSet" />
+            <End Role="User" EntitySet="UserSet" />
           </AssociationSet>
-          <AssociationSet Name="UserFlightElement" Association="DLModel.UserFlightElement">
-            <End Role="User" EntitySet="User" />
-            <End Role="FlightElement" EntitySet="FlightElement" />
+          <AssociationSet Name="OrderSingularUser" Association="DLModel.OrderSingularUser">
+            <End Role="Order" EntitySet="OrderSet" />
+            <End Role="SingularUser" EntitySet="SingularUserSet" />
           </AssociationSet>
-          <AssociationSet Name="RoleFlightElement" Association="DLModel.RoleFlightElement">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="FlightElement" EntitySet="FlightElement" />
+          <EntitySet Name="FlightSet" EntityType="DLModel.Flight" />
+          <AssociationSet Name="FlightAirplane" Association="DLModel.FlightAirplane">
+            <End Role="Flight" EntitySet="FlightSet" />
+            <End Role="Airplane" EntitySet="AirplaneSet" />
           </AssociationSet>
-          <EntitySet Name="TandemOrder" EntityType="DLModel.TandemOrder" />
-          <AssociationSet Name="TandemOrderUser" Association="DLModel.TandemOrderUser">
-            <End Role="TandemOrder" EntitySet="TandemOrder" />
-            <End Role="User" EntitySet="User" />
+          <EntitySet Name="FlightsElemSet" EntityType="DLModel.FlightsElem" />
+          <EntitySet Name="ParachuteSet" EntityType="DLModel.Parachute" />
+          <AssociationSet Name="ParachuteUser" Association="DLModel.ParachuteUser">
+            <End Role="Parachute" EntitySet="ParachuteSet" />
+            <End Role="User" EntitySet="UserSet" />
           </AssociationSet>
-          <AssociationSet Name="FlightElementTandemOrder" Association="DLModel.FlightElementTandemOrder">
-            <End Role="FlightElement" EntitySet="FlightElement" />
-            <End Role="TandemOrder" EntitySet="TandemOrder" />
+          <AssociationSet Name="FlightsElemFlight" Association="DLModel.FlightsElemFlight">
+            <End Role="FlightsElem" EntitySet="FlightsElemSet" />
+            <End Role="Flight" EntitySet="FlightSet" />
           </AssociationSet>
-          <AssociationSet Name="UserTandemOrder" Association="DLModel.UserTandemOrder">
-            <End Role="User" EntitySet="User" />
-            <End Role="TandemOrder" EntitySet="TandemOrder" />
+          <AssociationSet Name="FlightsElemUser" Association="DLModel.FlightsElemUser">
+            <End Role="FlightsElem" EntitySet="FlightsElemSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="FlightsElemSingularUser" Association="DLModel.FlightsElemSingularUser">
+            <End Role="FlightsElem" EntitySet="FlightsElemSet" />
+            <End Role="SingularUser" EntitySet="SingularUserSet" />
+          </AssociationSet>
+          <AssociationSet Name="FlightsElemParachute" Association="DLModel.FlightsElemParachute">
+            <End Role="FlightsElem" EntitySet="FlightsElemSet" />
+            <End Role="Parachute" EntitySet="ParachuteSet" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="PaymentsSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Value" Type="Decimal" Nullable="false" />
+          <Property Name="Count" Type="Int16" Nullable="false" />
+          <Property Name="Type" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GlobalSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssemblyValue" Type="Decimal" Nullable="false" />
+          <Property Name="TimeBefore" Type="Time" Nullable="false" />
+          <Property Name="TimeAfter" Type="Time" Nullable="false" />
+          <Property Name="AirportsName" Type="String" Nullable="false" />
+          <Property Name="CertExpired" Type="Int16" Nullable="false" />
+          <Property Name="CountPerHour" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Operator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DLModel.UserOperator" FromRole="Operator" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UsersType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Value" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DLModel.UserUsersType" FromRole="UsersType" ToRole="User" />
+        </EntityType>
+        <EntityType Name="SingularUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="SurName" Type="String" Nullable="false" />
+          <Property Name="PlaningDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="DLModel.OrderSingularUser" FromRole="SingularUser" ToRole="Order" />
+          <NavigationProperty Name="FlightsElem" Relationship="DLModel.FlightsElemSingularUser" FromRole="SingularUser" ToRole="FlightsElem" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Role" Relationship="DLModel.UsersRoles" FromRole="Users" ToRole="Roles" />
-          <Property Name="UsersNr" Type="Int32" Nullable="true" />
+          <Property Name="Login" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="Certificate" Type="String" Nullable="false" />
+          <Property Name="CertDate" Type="DateTime" Nullable="false" />
           <Property Name="FirstName" Type="String" Nullable="false" />
           <Property Name="SurName" Type="String" Nullable="false" />
-          <Property Name="Login" Type="String" Nullable="true" />
-          <Property Name="Password" Type="String" Nullable="true" />
-          <Property Name="CertificateNr" Type="String" Nullable="true" />
-          <Property Name="CertificateDate" Type="DateTime" Nullable="true" />
-          <Property Name="Street" Type="String" Nullable="true" />
-          <Property Name="ZipCode" Type="String" Nullable="true" />
           <Property Name="City" Type="String" Nullable="true" />
+          <Property Name="ZipCode" Type="String" Nullable="true" />
+          <Property Name="Street" Type="String" Nullable="true" />
+          <Property Name="StreetNr" Type="String" Nullable="true" />
           <Property Name="Phone" Type="String" Nullable="true" />
           <Property Name="Email" Type="String" Nullable="true" />
-          <Property Name="Facebook" Type="String" Nullable="true" />
-          <NavigationProperty Name="FlightElement" Relationship="DLModel.UserFlightElement" FromRole="User" ToRole="FlightElement" />
-          <NavigationProperty Name="TandemOrderPilot" Relationship="DLModel.TandemOrderUser" FromRole="User" ToRole="TandemOrder" />
-          <NavigationProperty Name="TandemOrderPassenger" Relationship="DLModel.UserTandemOrder" FromRole="User" ToRole="TandemOrder" />
+          <Property Name="FaceBook" Type="String" Nullable="true" />
+          <NavigationProperty Name="UsersType" Relationship="DLModel.UserUsersType" FromRole="User" ToRole="UsersType" />
+          <NavigationProperty Name="Operator" Relationship="DLModel.UserOperator" FromRole="User" ToRole="Operator" />
+          <NavigationProperty Name="Order" Relationship="DLModel.OrderUser" FromRole="User" ToRole="Order" />
+          <Property Name="IdNr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <NavigationProperty Name="Parachute" Relationship="DLModel.ParachuteUser" FromRole="User" ToRole="Parachute" />
+          <NavigationProperty Name="FlightsElem" Relationship="DLModel.FlightsElemUser" FromRole="User" ToRole="FlightsElem" />
         </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="User" Relationship="DLModel.UsersRoles" FromRole="Roles" ToRole="Users" />
-          <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="Value" Type="Double" Nullable="true" />
-          <Property Name="Camera" Type="Boolean" Nullable="false" />
-          <Property Name="TandemPilot" Type="Boolean" Nullable="false" />
-          <Property Name="TandemPassenger" Type="Boolean" Nullable="false" />
-          <Property Name="SpecialType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="FlightElement" Relationship="DLModel.RoleFlightElement" FromRole="Role" ToRole="FlightElement" />
-        </EntityType>
-        <Association Name="UsersRoles">
-          <End Type="DLModel.User" Role="Users" Multiplicity="1" />
-          <End Type="DLModel.Role" Role="Roles" Multiplicity="*" />
+        <Association Name="UserUsersType">
+          <End Type="DLModel.User" Role="User" Multiplicity="1" />
+          <End Type="DLModel.UsersType" Role="UsersType" Multiplicity="*" />
         </Association>
-        <EntityType Name="Setting">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AssemblyValue" Type="Double" Nullable="false" />
-          <Property Name="CameraValue" Type="Double" Nullable="false" />
-        </EntityType>
+        <Association Name="UserOperator">
+          <End Type="DLModel.User" Role="User" Multiplicity="1" />
+          <End Type="DLModel.Operator" Role="Operator" Multiplicity="*" />
+        </Association>
         <EntityType Name="Airplane">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegNr" Type="String" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="Number" Type="String" Nullable="false" />
-          <Property Name="Seats" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Flight" Relationship="DLModel.AirplaneFlight" FromRole="Airplane" ToRole="Flight" />
+          <Property Name="Seats" Type="String" Nullable="false" />
+          <NavigationProperty Name="Flight" Relationship="DLModel.FlightAirplane" FromRole="Airplane" ToRole="Flight" />
         </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderTime" Type="DateTime" Nullable="false" />
+          <Property Name="IsUser" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DLModel.OrderUser" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="SingularUser" Relationship="DLModel.OrderSingularUser" FromRole="Order" ToRole="SingularUser" />
+        </EntityType>
+        <Association Name="OrderUser">
+          <End Type="DLModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="DLModel.User" Role="User" Multiplicity="0..1" />
+        </Association>
+        <Association Name="OrderSingularUser">
+          <End Type="DLModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="DLModel.SingularUser" Role="SingularUser" Multiplicity="0..1" />
+        </Association>
         <EntityType Name="Flight">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Number" Type="String" Nullable="false" />
-          <Property Name="DateTime" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="Airplane" Relationship="DLModel.AirplaneFlight" FromRole="Flight" ToRole="Airplane" />
-          <NavigationProperty Name="FlightElement" Relationship="DLModel.FlightFlightElement" FromRole="Flight" ToRole="FlightElement" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="Altitude" Type="Double" Nullable="true" />
+          <NavigationProperty Name="Airplane" Relationship="DLModel.FlightAirplane" FromRole="Flight" ToRole="Airplane" />
+          <Property Name="FlyDateTime" Type="DateTime" Nullable="false" />
+          <Property Name="FlyNr" Type="String" Nullable="false" />
+          <Property Name="FlyStatus" Type="Int16" Nullable="false" />
+          <Property Name="Altitude" Type="Int32" Nullable="false" DefaultValue="4000" />
+          <NavigationProperty Name="FlightsElem" Relationship="DLModel.FlightsElemFlight" FromRole="Flight" ToRole="FlightsElem" />
         </EntityType>
-        <Association Name="AirplaneFlight">
-          <End Type="DLModel.Airplane" Role="Airplane" Multiplicity="0..1" />
+        <Association Name="FlightAirplane">
           <End Type="DLModel.Flight" Role="Flight" Multiplicity="1" />
+          <End Type="DLModel.Airplane" Role="Airplane" Multiplicity="1" />
         </Association>
-        <EntityType Name="FlightElement">
+        <EntityType Name="FlightsElem">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Flight" Relationship="DLModel.FlightFlightElement" FromRole="FlightElement" ToRole="Flight" />
-          <NavigationProperty Name="User" Relationship="DLModel.UserFlightElement" FromRole="FlightElement" ToRole="User" />
-          <NavigationProperty Name="Role" Relationship="DLModel.RoleFlightElement" FromRole="FlightElement" ToRole="Role" />
-          <NavigationProperty Name="TandemOrder" Relationship="DLModel.FlightElementTandemOrder" FromRole="FlightElement" ToRole="TandemOrder" />
+          <NavigationProperty Name="Flight" Relationship="DLModel.FlightsElemFlight" FromRole="FlightsElem" ToRole="Flight" />
+          <Property Name="IsUser" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DLModel.FlightsElemUser" FromRole="FlightsElem" ToRole="User" />
+          <NavigationProperty Name="SingularUser" Relationship="DLModel.FlightsElemSingularUser" FromRole="FlightsElem" ToRole="SingularUser" />
+          <Property Name="AssemblySelf" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Parachute" Relationship="DLModel.FlightsElemParachute" FromRole="FlightsElem" ToRole="Parachute" />
         </EntityType>
-        <Association Name="FlightFlightElement">
-          <End Type="DLModel.Flight" Role="Flight" Multiplicity="1" />
-          <End Type="DLModel.FlightElement" Role="FlightElement" Multiplicity="*" />
-        </Association>
-        <Association Name="UserFlightElement">
-          <End Type="DLModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="DLModel.FlightElement" Role="FlightElement" Multiplicity="1" />
-        </Association>
-        <Association Name="RoleFlightElement">
-          <End Type="DLModel.Role" Role="Role" Multiplicity="0..1" />
-          <End Type="DLModel.FlightElement" Role="FlightElement" Multiplicity="1" />
-        </Association>
-        <EntityType Name="TandemOrder">
+        <EntityType Name="Parachute">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="TandemPilot" Relationship="DLModel.TandemOrderUser" FromRole="TandemOrder" ToRole="User" />
-          <Property Name="SuggestDateTime" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="FlightElement" Relationship="DLModel.FlightElementTandemOrder" FromRole="TandemOrder" ToRole="FlightElement" />
-          <NavigationProperty Name="TandemPassenger" Relationship="DLModel.UserTandemOrder" FromRole="TandemOrder" ToRole="User" />
+          <Property Name="IdNr" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="RegistryNr" Type="String" Nullable="false" />
+          <Property Name="RentValue" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DLModel.ParachuteUser" FromRole="Parachute" ToRole="User" />
+          <NavigationProperty Name="FlightsElem" Relationship="DLModel.FlightsElemParachute" FromRole="Parachute" ToRole="FlightsElem" />
         </EntityType>
-        <Association Name="TandemOrderUser">
-          <End Type="DLModel.TandemOrder" Role="TandemOrder" Multiplicity="1" />
+        <Association Name="ParachuteUser">
+          <End Type="DLModel.Parachute" Role="Parachute" Multiplicity="0..1" />
+          <End Type="DLModel.User" Role="User" Multiplicity="1" />
+        </Association>
+        <Association Name="FlightsElemFlight">
+          <End Type="DLModel.FlightsElem" Role="FlightsElem" Multiplicity="*" />
+          <End Type="DLModel.Flight" Role="Flight" Multiplicity="1" />
+        </Association>
+        <Association Name="FlightsElemUser">
+          <End Type="DLModel.FlightsElem" Role="FlightsElem" Multiplicity="1" />
           <End Type="DLModel.User" Role="User" Multiplicity="0..1" />
         </Association>
-        <Association Name="FlightElementTandemOrder">
-          <End Type="DLModel.FlightElement" Role="FlightElement" Multiplicity="1" />
-          <End Type="DLModel.TandemOrder" Role="TandemOrder" Multiplicity="0..1" />
+        <Association Name="FlightsElemSingularUser">
+          <End Type="DLModel.FlightsElem" Role="FlightsElem" Multiplicity="1" />
+          <End Type="DLModel.SingularUser" Role="SingularUser" Multiplicity="0..1" />
         </Association>
-        <Association Name="UserTandemOrder">
-          <End Type="DLModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="DLModel.TandemOrder" Role="TandemOrder" Multiplicity="1" />
+        <Association Name="FlightsElemParachute">
+          <End Type="DLModel.FlightsElem" Role="FlightsElem" Multiplicity="1" />
+          <End Type="DLModel.Parachute" Role="Parachute" Multiplicity="0..1" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DLModelStoreContainer" CdmEntityContainer="DLModelContainer">
-    <EntitySetMapping Name="User">
-      <EntityTypeMapping TypeName="IsTypeOf(DLModel.User)">
-        <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="UsersNr" ColumnName="UsersNr" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="SurName" ColumnName="SurName" />
-          <ScalarProperty Name="Login" ColumnName="Login" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="CertificateNr" ColumnName="CertificateNr" />
-          <ScalarProperty Name="CertificateDate" ColumnName="CertificateDate" />
-          <ScalarProperty Name="Street" ColumnName="Street" />
-          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Facebook" ColumnName="Facebook" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Role">
-      <EntityTypeMapping TypeName="IsTypeOf(DLModel.Role)">
-        <MappingFragment StoreEntitySet="Role">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Value" ColumnName="Value" />
-          <ScalarProperty Name="Camera" ColumnName="Camera" />
-          <ScalarProperty Name="TandemPilot" ColumnName="TandemPilot" />
-          <ScalarProperty Name="TandemPassenger" ColumnName="TandemPassenger" />
-          <ScalarProperty Name="SpecialType" ColumnName="SpecialType" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Setting">
-      <EntityTypeMapping TypeName="IsTypeOf(DLModel.Setting)">
-        <MappingFragment StoreEntitySet="Setting">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="AssemblyValue" ColumnName="AssemblyValue" />
-          <ScalarProperty Name="CameraValue" ColumnName="CameraValue" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Airplane">
-      <EntityTypeMapping TypeName="IsTypeOf(DLModel.Airplane)">
-        <MappingFragment StoreEntitySet="Airplane">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Number" ColumnName="Number" />
-          <ScalarProperty Name="Seats" ColumnName="Seats" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Flight">
-      <EntityTypeMapping TypeName="IsTypeOf(DLModel.Flight)">
-        <MappingFragment StoreEntitySet="Flight">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Number" ColumnName="Number" />
-          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Altitude" ColumnName="Altitude" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="FlightElement">
-      <EntityTypeMapping TypeName="IsTypeOf(DLModel.FlightElement)">
-        <MappingFragment StoreEntitySet="FlightElement">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TandemOrder">
-      <EntityTypeMapping TypeName="IsTypeOf(DLModel.TandemOrder)">
-        <MappingFragment StoreEntitySet="TandemOrder">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="SuggestDateTime" ColumnName="SuggestDateTime" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="UsersRoles" TypeName="DLModel.UsersRoles" StoreEntitySet="Role">
-      <EndProperty Name="Users">
-        <ScalarProperty Name="Id" ColumnName="User_Id" />
-      </EndProperty>
-      <EndProperty Name="Roles">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="AirplaneFlight" TypeName="DLModel.AirplaneFlight" StoreEntitySet="Airplane">
-      <EndProperty Name="Flight">
-        <ScalarProperty Name="Id" ColumnName="Flight_Id" />
-      </EndProperty>
-      <EndProperty Name="Airplane">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FlightFlightElement" TypeName="DLModel.FlightFlightElement" StoreEntitySet="FlightElement">
-      <EndProperty Name="Flight">
-        <ScalarProperty Name="Id" ColumnName="Flight_Id" />
-      </EndProperty>
-      <EndProperty Name="FlightElement">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="UserFlightElement" TypeName="DLModel.UserFlightElement" StoreEntitySet="User">
-      <EndProperty Name="FlightElement">
-        <ScalarProperty Name="Id" ColumnName="FlightElement_Id" />
-      </EndProperty>
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="RoleFlightElement" TypeName="DLModel.RoleFlightElement" StoreEntitySet="Role">
-      <EndProperty Name="FlightElement">
-        <ScalarProperty Name="Id" ColumnName="FlightElement_Id" />
-      </EndProperty>
-      <EndProperty Name="Role">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="TandemOrderUser" TypeName="DLModel.TandemOrderUser" StoreEntitySet="User">
-      <EndProperty Name="TandemOrder">
-        <ScalarProperty Name="Id" ColumnName="TandemOrderPilot_Id" />
-      </EndProperty>
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FlightElementTandemOrder" TypeName="DLModel.FlightElementTandemOrder" StoreEntitySet="TandemOrder">
-      <EndProperty Name="FlightElement">
-        <ScalarProperty Name="Id" ColumnName="FlightElement_Id" />
-      </EndProperty>
-      <EndProperty Name="TandemOrder">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="UserTandemOrder" TypeName="DLModel.UserTandemOrder" StoreEntitySet="User">
-      <EndProperty Name="TandemOrder">
-        <ScalarProperty Name="Id" ColumnName="TandemOrderPassenger_Id" />
-      </EndProperty>
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-  </EntityContainerMapping>
+    </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->

@@ -17,17 +17,18 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Flight()
         {
-            this.FlightElement = new HashSet<FlightElement>();
+            this.Altitude = 4000;
+            this.FlightsElem = new HashSet<FlightsElem>();
         }
     
         public int Id { get; set; }
-        public string Number { get; set; }
-        public System.DateTime DateTime { get; set; }
-        public int Status { get; set; }
-        public Nullable<double> Altitude { get; set; }
+        public System.DateTime FlyDateTime { get; set; }
+        public string FlyNr { get; set; }
+        public short FlyStatus { get; set; }
+        public int Altitude { get; set; }
     
         public virtual Airplane Airplane { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FlightElement> FlightElement { get; set; }
+        public virtual ICollection<FlightsElem> FlightsElem { get; set; }
     }
 }
