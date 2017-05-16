@@ -138,20 +138,21 @@
             this.Txt_Pasword.Location = new System.Drawing.Point(235, 68);
             this.Txt_Pasword.Name = "Txt_Pasword";
             this.Txt_Pasword.PasswordChar = '●';
-            this.Txt_Pasword.Size = new System.Drawing.Size(162, 20);
+            this.Txt_Pasword.Size = new System.Drawing.Size(162, 23);
             this.Txt_Pasword.TabIndex = 1;
             this.Txt_Pasword.UseSystemPasswordChar = true;
+            this.Txt_Pasword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_Pasword_KeyDown);
             // 
             // Txt_Login
             // 
             this.Txt_Login.Location = new System.Drawing.Point(235, 42);
             this.Txt_Login.Name = "Txt_Login";
-            this.Txt_Login.Size = new System.Drawing.Size(162, 20);
+            this.Txt_Login.Size = new System.Drawing.Size(162, 23);
             this.Txt_Login.TabIndex = 0;
             // 
             // StyleManager
             // 
-            this.StyleManager.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2007Blue;
+            this.StyleManager.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2007Black;
             // 
             // FrmLogin
             // 

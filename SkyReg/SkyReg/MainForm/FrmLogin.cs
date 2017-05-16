@@ -87,6 +87,11 @@ namespace SkyReg.MainForm
 
         private void Btn_Login_Click(object sender, EventArgs e)
         {
+            LogIn();
+        }
+
+        private void LogIn()
+        {
             string login = Txt_Login.Text;
             string password = Txt_Pasword.Text;
 
@@ -98,6 +103,7 @@ namespace SkyReg.MainForm
                     if (user != default(User))
                     {
                         SaveUserConfig(user);
+                        this.DialogResult = DialogResult.OK;
                     }
                     else
                         KryptonMessageBox.Show("Podany login lub hasło nie są prawidłowe", "Błąd logowania", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -135,6 +141,12 @@ namespace SkyReg.MainForm
                 Txt_Login.Focus();
             else
                 Txt_Pasword.Focus();
+        }
+
+        private void Txt_Pasword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+                LogIn();
         }
     }
 }

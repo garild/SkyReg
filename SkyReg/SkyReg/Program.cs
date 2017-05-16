@@ -33,7 +33,9 @@ namespace SkyReg
                 FrmLogin frm = new FrmLogin();
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
+                    frm.Close();
                     Application.Run(new FrmMain());
+                    
                 }
                 else
                     Application.Exit();
